@@ -1,0 +1,272 @@
+html,
+body,
+#map-container {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: Georgia, serif;
+}
+
+:root {
+  --ol-background-color: #cf4638;
+  --ol-foreground-color: #rgba(0, 0, 0, 0.5);
+  --ol-subtle-foreground-color: #fff;
+}
+
+.ol-attribution {
+  display: none;
+}
+
+.locate {
+  bottom: 3em;
+  left: 0.5em;
+}
+
+.baseMap {
+  left: 0.5em;
+  bottom: 1em;
+}
+
+#header {
+  height: auto;
+  width: auto;
+  border-radius: 30px;
+  z-index: 999;
+  top: 0.5em;
+  left: 0.5em;
+  right: 0.5em;
+  position: absolute;
+  background: #fff;
+}
+#success-alert {
+  /* top: 5em;
+  left: 7em; */
+  z-index: 1;
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+#warning-alert {
+  /* top: 5em;
+  left: 7em; */
+  z-index: 1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.mainMenuDiv {
+  top: 0.5em;
+  right: 0.5em;
+  z-index: 999;
+  position: absolute;
+  background-color: #f9f9f900;
+}
+#taskMenu,
+#bookmarkMenu,
+#pinMenu {
+  height: 2em;
+  width: 2em;
+  font-size: 2em;
+  border-radius: 50%;
+}
+#menuBtn {
+  height: 2em;
+  width: 2em;
+  font-size: 2em;
+  border-radius: 50%;
+  margin-top: -6px;
+}
+
+button.close {
+  padding-left: 10px;
+}
+
+#logo {
+  width: 125px;
+  margin-bottom: 5px;
+}
+
+#latLongZoom{
+  z-index: 1;
+  position: absolute;
+  bottom: 1em;
+  right: 0.5em;
+  background: #fff;
+  padding: 0px 5px 0px 5px;
+  border-radius: 3px;
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5); 
+}
+#task_id_list_container {
+  /* top: 5em;
+  left: 7em; */
+  z-index: 999;
+  position: absolute;
+  
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);  
+  top: 10em;
+  left: 0.5em;
+  right: 5.5em;
+}
+#task_id_list{
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 400px;
+
+}
+#task_id_list_search{
+  width: 100%; /* Full-width */
+  font-size: 16px; /* Increase font-size */
+  padding: 12px 20px 12px 20px; /* Add some padding */
+  border: 3px solid #ddd; /* Add a grey border */
+  border-radius: 10px 10px 0px 0px; /* Round the borders */
+}
+#gloableSearch{font-size: 16px;
+  margin: 10px;
+  padding: 7px;
+  border: none;
+  border-radius: 30px;
+  outline: none;
+
+}
+
+
+
+#disableBG{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000000;
+  opacity: 0.5;
+  z-index: 1;
+}
+
+.ol-popup {
+  position: absolute;
+  background-color: white;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid #cccccc;
+  bottom: 12px;
+  left: -50px;
+  min-width: 350px;
+  height: 360px;
+}
+.ol-popup:after,
+.ol-popup:before {
+  top: 100%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+.ol-popup:after {
+  border-top-color: white;
+  border-width: 10px;
+  left: 48px;
+  margin-left: -10px;
+}
+.ol-popup:before {
+  border-top-color: #cccccc;
+  border-width: 11px;
+  left: 48px;
+  margin-left: -11px;
+}
+.ol-popup-closer {
+  color: #cf4638;
+  text-decoration: none;
+  position: absolute;
+  top: 2px;
+  right: 8px;
+}
+.ol-popup-closer:after {
+  content: "✖";
+}
+
+.drawBtndiv {
+  right: 0.5em;
+  bottom: 3em;
+  z-index: 1;
+}
+
+.required::after {
+  content: " *";
+  color: red;
+}
+
+#drawUndo,
+#drawModify,
+#drawSave {
+  height: 2em;
+  width: 2em;
+  font-size: 1.8em;
+}
+
+#drawBtn {
+  font-size: 1.8em;
+  height: 2em;
+  width: 2em;
+}
+
+#drawObjSelect {
+  display: none;
+  bottom: 1em;
+  right: 0.5em;
+  z-index: 1;
+  position: absolute;
+}
+
+/* Style for the entire table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* Style for table headers */
+th {
+  background-color: #f2f2f2;
+  text-align: left;
+  padding: 10px;
+  border-bottom: 2px solid #ccc;
+}
+
+/* Style for table cells */
+td {
+  padding: 8px;
+  border-bottom: 1px solid #ccc;
+}
+
+/* Style for alternating rows */
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* Style for input and select elements */
+.drawtable input,
+.drawtable select {
+  width: 100%;
+  padding: 3px;
+  box-sizing: border-box;
+}
+
+#ObjectName {
+  text-align: center;
+  color: #cf4638;
+}
+.drawtable {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 250px;
+}
