@@ -28,7 +28,7 @@
       <div id="header">
         <div>
           <img id="logo" src="img/logo_geofy.png" alt="logo_geofy" />
-          <input class="" type="text" id="gloableSearch" placeholder="Search Here..">
+          <input class="" type="text" onkeyup="gloableSearch(this.value)" id="gloableSearch" placeholder="Search Here..">
           <div class="ol-control mainMenuDiv">
             <button
               class="mainMenu"
@@ -45,6 +45,7 @@
             </div>
           </div>
         </div>
+        <div id="search-results"></div>
       </div>
       
 
@@ -118,6 +119,7 @@
     <script src="utils/autoFil.js"></script>
     <script src="utils/saveLocal.js"></script>
     <script src="utils/saveIndexedDB.js"></script>
+    <script src="tool/gloableSearch.js"></script>
     <script src="tool/tasks.js"></script>
     <script src="utils/FileSaver.min.js"></script>
     <script src="vendor/daypilot-modal-3.15.1.min.js"></script>

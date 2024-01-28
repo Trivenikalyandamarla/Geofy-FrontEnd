@@ -4,6 +4,8 @@ var googleLayerSatellite = new ol.layer.Tile({
   visible: false,
   source: new ol.source.TileImage({
     url: "https://mt1.google.com/vt/lyrs=s&hl=pl&&x={x}&y={y}&z={z}",
+    cacheSize:250
+    
   }),
 });
 var googleLayerRoadmap = new ol.layer.Tile({
@@ -12,6 +14,7 @@ var googleLayerRoadmap = new ol.layer.Tile({
   visible: true,
   source: new ol.source.TileImage({
     url: "https://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}",
+    cacheSize:250
   }),
 });
 
@@ -323,4 +326,20 @@ function preview_image(event) {
 $("#taskMenu").on("click", function () {
   $("#task_id_list_container").toggle();
   $("#disableBG").toggle();
+});
+
+$("#pinMenu").click(function () {
+  // on map get coordinate
+  map.once("singleclick", function (evt) {
+    if (evt.dragging) {
+      return;
+    }
+    var coordinate = map.getEventCoordinate(evt.originalEvent);
+    var lonlat = ol.proj.toLonLat(coordinate);
+    lat = lonlat[1].toFixed(6);
+    lon = lonlat[0].toFixed(6);
+
+    $("#gloableSearch").val(lat + "," + lon);
+    $("#gloableSearch").trigger("keyup");
+  });
 });
