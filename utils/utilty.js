@@ -1,4 +1,20 @@
-function addMetaData(key, val) {}
+var localConfigFile = "config/objects.json"; 
+
+// read json file
+
+$.getJSON(localConfigFile).done(function (data) {
+  // console.log(data);
+  $.each(data.objects, function (index, element) {
+    // console.log(element);
+
+    var objName = element.name;
+
+    addLocalObjectDataModel(objName,element)
+    
+  })
+
+  // addLocalObjectDataModel()
+})
 
 var orgConfigURL =
   "https://firebasestorage.googleapis.com/v0/b/geofy-ff511.appspot.com/o/config_file%2Forg_Config.json?alt=media";
@@ -10,14 +26,6 @@ function setDataToContainer(m_orgConfigDetailes) {
     $("#objTypeSelect").append(
       `<option value="${element.Geometry_Type}">${element.Object_Name}</option>`
     );
-  });
-
-  // Network Type Add from 1st Object
-
-  $.each(m_orgConfigDetailes.Network_Type, function (index, Voltage_Type) {
-    $("#objNetworkTypeSelect").append(`<option value="${Voltage_Type}">
-                                               ${Voltage_Type}
-                                          </option>`);
   });
 }
 if (
@@ -35,3 +43,6 @@ if (
 
   setDataToContainer(l_orgConfigDetailes);
 }
+
+
+

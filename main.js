@@ -4,8 +4,6 @@ var googleLayerSatellite = new ol.layer.Tile({
   visible: false,
   source: new ol.source.TileImage({
     url: "https://mt1.google.com/vt/lyrs=s&hl=pl&&x={x}&y={y}&z={z}",
-    cacheSize:250
-    
   }),
 });
 var googleLayerRoadmap = new ol.layer.Tile({
@@ -14,7 +12,6 @@ var googleLayerRoadmap = new ol.layer.Tile({
   visible: true,
   source: new ol.source.TileImage({
     url: "https://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}",
-    cacheSize:250
   }),
 });
 
@@ -41,8 +38,13 @@ if (lastveiw != null) {
   // map.getView().setZoom(zoom)
 
   map.getView().animate({ center: center }, { zoom: zoom }, { duration: 1000 });
-}else{
-  map.getView().animate({ center: [8925105.396850493, 2979933.0222854717] }, { zoom: 4.5 });
+} else {
+  map
+    .getView()
+    .animate(
+      { center: [8925105.396850493, 2979933.0222854717] },
+      { zoom: 4.5 }
+    );
 }
 
 //myLocationlayer
@@ -126,8 +128,12 @@ map.on("moveend", function lastView() {
   };
   localStorage.setItem("lastView", JSON.stringify(state));
 
-  $("#latLong").text(ol.proj.toLonLat(map.getView().getCenter())[1].toFixed(6) +","+ol.proj.toLonLat(map.getView().getCenter())[0].toFixed(6))
-  $("#zoom").text(map.getView().getZoom().toFixed(0)+"z")
+  $("#latLong").text(
+    ol.proj.toLonLat(map.getView().getCenter())[1].toFixed(6) +
+      "," +
+      ol.proj.toLonLat(map.getView().getCenter())[0].toFixed(6)
+  );
+  $("#zoom").text(map.getView().getZoom().toFixed(0) + "z");
 });
 
 // draw layer
@@ -257,7 +263,7 @@ function showSelection() {
         if (check) {
           var modifyDate = new Date().toISOString();
           feature.set("modifyDate", modifyDate);
-          feature.set("action", feature.get("action")+","+"edit");
+          feature.set("action", feature.get("action") + "," + "edit");
           feature.setProperties(objProp);
           setPreviousFill(objProp);
           popupCloser();
@@ -322,9 +328,8 @@ function preview_image(event) {
   reader.readAsDataURL(event.target.files[0]);
 }
 
-
-$("#taskMenu").on("click", function () {
-  $("#task_id_list_container").toggle();
+$("#userObjMenu").on("click", function () {
+  $("#object_list_container").toggle();
   $("#disableBG").toggle();
 });
 

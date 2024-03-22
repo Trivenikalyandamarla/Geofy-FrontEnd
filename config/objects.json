@@ -1,0 +1,88 @@
+{
+  "objects": [
+    {
+      "name": "Point",
+      "geomType": "Point",
+      "symbol": "red-circle-solid",
+      "anotation": true,
+      "formFields": [
+        {
+          "FieldName": "Point- Example Field Required",
+          "FieldType": "input",
+          "required": true
+        },
+        {
+          "FieldName": "Example Field Select",
+          "FieldType": "select",
+          "option": [
+            "Option 1",
+            "Option 2",
+            "Option 3"
+          ],
+          "required": true
+        },
+        {
+          "FieldName": "Example Field Not Required",
+          "FieldType": "input",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "LineString",
+      "geomType": "LineString",
+      "symbol": "red-line-dashed",
+      "anotation": true,
+      "formFields": [
+        {
+          "FieldName": "LineString- Example Field Required",
+          "FieldType": "input",
+          "required": true
+        },
+        {
+          "FieldName": "Example Field Select",
+          "FieldType": "select",
+          "option": [
+            "Option 1",
+            "Option 2",
+            "Option 3"
+          ],
+          "required": true
+        },
+        {
+          "FieldName": "Example Field Not Required",
+          "FieldType": "input",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "Polygon",
+      "geomType": "Polygon",
+      "symbol": "red-polygon-solid",
+      "anotation": true,
+      "formFields": [
+        {
+          "FieldName": "Polygon- Example Field Required",
+          "FieldType": "input",
+          "required": true
+        },
+        {
+          "FieldName": "Example Field Select",
+          "FieldType": "select",
+          "option": [
+            "Option 1",
+            "Option 2",
+            "Option 3"
+          ],
+          "required": true
+        },
+        {
+          "FieldName": "Example Field Not Required",
+          "FieldType": "input",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

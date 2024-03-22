@@ -7,50 +7,14 @@ const drawTaskID = new ol.layer.Vector({
 map.addLayer(drawTaskID);
 
 function closeTaskList() {
-  $("#task_id_list_container").hide();
+  $("#object_list_container").hide();
   $("#disableBG").hide();
 }
 
-function createNewTask() {
+function createNewObject() {
   closeTaskList();
 
-  const draw = new ol.interaction.Draw({
-    source: taskVectorSource,
-    type: "Point",
-  });
-  map.addInteraction(draw);
-
-  draw.on("drawend", function (evt) {
-    map.removeInteraction(draw);
-    var taskIDNumber = drawTaskID.getSource().getFeatures().length + 1;
-
-    var feature = evt.feature;
-    var TaskID = "Rajnish_Task_" + taskIDNumber;
-    var creationDate = new Date().toISOString();
-    feature.setProperties({
-      TaskID: TaskID,
-      creationDateTime: creationDate,
-      TaskStatus: "TaskStatus",
-      TaskType: "TaskType",
-      TaskPriority: "TaskPriority",
-    });
-
-    properties = feature.getProperties();
-    // console.log(feature.getGeometry().getCoordinates());
-    // console.log(ol.proj.toLonLat(feature.getGeometry().getCoordinates()));
-
-    delete properties.geometry;
-    let asset = {
-      type: "Feature",
-      properties: properties,
-      geometry: {
-        coordinates: feature.getGeometry().getCoordinates(),
-        type: feature.getGeometry().getType(),
-      },
-    };
-
-    addLocalTaskID(TaskID, asset);
-  });
+  // addLocalTaskID(TaskID, asset);
 }
 
 function taskFileter() {
@@ -60,7 +24,7 @@ function taskFileter() {
   ul = document.getElementById("task_id_list");
   li = ul.getElementsByTagName("li");
   for (i = 0; i < li.length; i++) {
-    a = li[i].getElementsByTagName("a")[0];
+    a = li[i];
     txtValue = a.textContent || a.innerText;
     if (txtValue.toUpperCase().indexOf(filter) > -1) {
       li[i].style.display = "";
@@ -68,4 +32,7 @@ function taskFileter() {
       li[i].style.display = "none";
     }
   }
+  
+
+
 }
