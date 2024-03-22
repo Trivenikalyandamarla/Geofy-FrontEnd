@@ -28,7 +28,7 @@ function saveLocal() {
     // Here I use the saveAs library to export the JSON as *.txt file
 
     var blob = new Blob(txtArray, { type: "text/json;charset=utf8" });
-    saveAs(blob, "Rajnish_task_001" + ".json");
+    saveAs(blob, "Task" + ".json");
   }
 
   // Call the function to export the GeoJSON

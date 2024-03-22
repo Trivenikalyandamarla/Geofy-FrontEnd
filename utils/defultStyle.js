@@ -43,7 +43,6 @@ colorList = { LV: "#F7A71B", MV: "#0000FF", HV: "#FF4FFF", EHV: "#ff0000" };
 
 const styleFunction = function (feature, resolution) {
   Object_Name = feature.get("Object_Name");
-  Network_Type = feature.get("Network Type");
   id = feature.get("ol_id");
   action = feature.get("action");
 
@@ -55,35 +54,25 @@ const styleFunction = function (feature, resolution) {
       image: new ol.style.Circle({
         radius: 6,
         fill: new ol.style.Fill({
-          color: colorList[Network_Type],
+          color: colorList["LV"],
         }),
         stroke: new ol.style.Stroke({
-          color: colorList[Network_Type],
+          color: colorList["LV"],
           width: 1,
-        }),
-      }),
-      text: new ol.style.Text({
-        font: "20px serif",
-        text: "Pl-" + Network_Type,
-        placement: "point",
-        offsetX: 10,
-        offsetY: 10,
-        fill: new ol.style.Fill({
-          color: "#000",
         }),
       }),
     });
   else if (Object_Name === "OH Line")
     style = new ol.style.Style({
       stroke: new ol.style.Stroke({
-        color: colorList[Network_Type],
+        color: colorList["LV"],
         width: 3,
       }),
     });
   else if (Object_Name === "UG Cable")
     style = new ol.style.Style({
       stroke: new ol.style.Stroke({
-        color: colorList[Network_Type],
+        color: colorList["LV"],
         lineDash: [10, 10],
         width: 3,
       }),
@@ -96,15 +85,6 @@ const styleFunction = function (feature, resolution) {
       stroke: new ol.style.Stroke({
         color: "#000",
         width: 2,
-      }),
-
-      text: new ol.style.Text({
-        font: "20px serif",
-        text: Object_Name + "-" + Network_Type,
-        placement: "point",
-        fill: new ol.style.Fill({
-          color: "#000",
-        }),
       }),
     });
   else if (
@@ -123,7 +103,7 @@ const styleFunction = function (feature, resolution) {
     style = new ol.style.Style({
       image: new ol.style.Icon({
         opacity: 1,
-        src: "./img/" + Object_Name + Network_Type + ".png",
+        src: "./img/" + Object_Name + "LV" + ".png",
       }),
     });
   else if (Object_Name === "FPB")
@@ -134,15 +114,6 @@ const styleFunction = function (feature, resolution) {
       stroke: new ol.style.Stroke({
         color: "#000",
         width: 2,
-      }),
-
-      text: new ol.style.Text({
-        font: "20px serif",
-        text: Object_Name + "-" + Network_Type,
-        placement: "point",
-        fill: new ol.style.Fill({
-          color: "#000",
-        }),
       }),
     });
   else

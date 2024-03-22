@@ -1,128 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
-    />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <script src="utils/jquery-3.7.1.min.js"></script>
-    <script src="ol_8_1/ol.js"></script>
-    <link rel="stylesheet" href="ol_8_1/ol.css" />
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
-    <link rel="stylesheet" href="main.css" />
 
-    <title>Geofy- GIS Field Application</title>
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <script src="utils/jquery-3.7.1.min.js"></script>
+  <script src="ol_8_1/ol.js"></script>
+  <link rel="stylesheet" href="ol_8_1/ol.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="main.css" />
 
-  <body>
-    <div id="map-container">
-      <div id="header">
-        <div>
-          <img id="logo" src="img/logo_geofy.png" alt="logo_geofy" />
-          <input class="" type="text" onkeyup="gloableSearch(this.value)" id="gloableSearch" placeholder="Search Here..">
-          <div class="ol-control mainMenuDiv">
-            <button
-              class="mainMenu"
-              id="menuBtn"
-              data-toggle="collapse"
-              data-target="#menucoll"
-            >
-              <i class="fa fa-sliders"></i>
-            </button>
-            <div id="menucoll" class="collapse">
-              <button id="pinMenu"><i class="fa fa-map-marker"></i></button>
-              <button id="taskMenu"><i class="fa fa-list-ul"></i></button>
-              <button id="bookmarkMenu"><i class="fa fa-bookmark"></i></button>
-            </div>
+  <title>Geofy Lite - Personal Use GIS Field Application</title>
+</head>
+
+<body>
+  <div id="map-container">
+    <div id="header">
+      <div>
+        <img id="logo" src="img/logo_geofy.png" alt="logo_geofy" />
+        <input class="" type="text" onkeyup="gloableSearch(this.value)" id="gloableSearch"
+          placeholder="Search Here.." />
+        <div class="ol-control mainMenuDiv">
+          <button class="mainMenu" id="menuBtn" data-toggle="collapse" data-target="#menucoll">
+            <i class="fa fa-sliders"></i>
+          </button>
+          <div id="menucoll" class="collapse">
+            <button id="pinMenu"><i class="fa fa-map-marker"></i></button>
+            <button id="userObjMenu"><i class="fa fa-list-ul"></i></button>
+            <button id="bookmarkMenu"><i class="fa fa-bookmark"></i></button>
           </div>
         </div>
-        <div id="search-results"></div>
       </div>
-      
+      <div id="search-results"></div>
+    </div>
 
-      <div class="ol-control drawBtndiv">
-        <button id="drawBtn" data-toggle="collapse" data-target="#drawcoll" title="Draw">
-          <i class="fa fa-pencil"></i>
+    <div class="ol-control drawBtndiv">
+      <button id="drawBtn" data-toggle="collapse" data-target="#drawcoll" title="Draw">
+        <i class="fa fa-pencil"></i>
+      </button>
+      <div id="drawcoll" class="collapse">
+        <!-- <button id="drawModify" title="Modify"><i class="fa fa-chain-broken"></i></button> -->
+        <button id="drawSave" title="Save">
+          <i class="fa fa-floppy-o"></i>
         </button>
-        <div id="drawcoll" class="collapse">
-          <!-- <button id="drawModify" title="Modify"><i class="fa fa-chain-broken"></i></button> -->
-          <button id="drawSave" title="Save">
-            <i class="fa fa-floppy-o"></i>
-          </button>
-        </div>
-      </div>
-
-      <div id="drawObjSelect">
-        <select id="objTypeSelect">
-          <option value="defult">Select Object</option>
-        </select>
-        <select id="objNetworkTypeSelect"></select>
       </div>
     </div>
 
-    <div id="latLongZoom" style="font-family: monospace;"> <span id="latLong" ></span>, <span id="zoom"></span></div>
-
-    <!-- alert templet -->
-    <div class="alert alert-success" id="success-alert" style="display: none">
-      <strong>Success! </strong> <span id="successmsg">Messages</span>
+    <div id="drawObjSelect">
+      <select id="objTypeSelect">
+        <option value="defult">Select Object</option>
+      </select>
     </div>
-    <div class="alert alert-warning" id="warning-alert" style="display: none">
-      <strong>Warning! </strong> <span id="warningmsg">Messages</span>
-    </div>
-     <!-- adding popup -->
-    <div id="popup" class="ol-popup">
-      <div id="popup-content"></div>
-    </div>
+  </div>
 
-    <!-- adding task_id list -->
-    <div id="task_id_list_container" style="display: none;">
-      <input class="" type="text" id="task_id_list_search" onkeyup="taskFileter()" placeholder="Search for Task..">
+  <div id="latLongZoom" style="font-family: monospace">
+    <span id="latLong"></span>, <span id="zoom"></span>
+  </div>
 
-      <li class="list-group-item" style="background-color: #cf4638;color: white; padding-left: 20px; padding-right: 20px;"><span >Task Id</span> <span style="float: right;">Status</span></li>
+  <!-- alert templet -->
+  <div class="alert alert-success" id="success-alert" style="display: none">
+    <strong>Success! </strong> <span id="successmsg">Messages</span>
+  </div>
+  <div class="alert alert-warning" id="warning-alert" style="display: none">
+    <strong>Warning! </strong> <span id="warningmsg">Messages</span>
+  </div>
+  <!-- adding popup -->
+  <div id="popup" class="ol-popup">
+    <div id="popup-content"></div>
+  </div>
 
-      <ul class="list-group" id="task_id_list">
-        <li class="list-group-item"> <a href="#" class="list-group-item list-group-item-action list-group-item-success">Rajnish_TSK_1 <span style="float: right;">Completed</span></a> </li>
-        <li class="list-group-item"> <a href="#" class="list-group-item list-group-item-action list-group-item-warning">Rajnish_TSK_2 <span style="float: right;">In Progress</span></a> </li>
-        <li class="list-group-item"> <a href="#" class="list-group-item list-group-item-action list-group-item-success">Rajnish_TSK_3 <span style="float: right;">Completed</span></a> </li>
-        <li class="list-group-item"> <a href="#" class="list-group-item list-group-item-action list-group-item-warning">Rajnish_TSK_4 <span style="float: right;">In Progress</span></a> </li>
-        <li class="list-group-item"> <a href="#" class="list-group-item list-group-item-action list-group-item-warning">Rajnish_TSK_5 <span style="float: right;">In Progress</span></a> </li>
-        <li class="list-group-item"> <a href="#" class="list-group-item list-group-item-action list-group-item-secondary">Rajnish_TSK_6 <span style="float: right;">Not Started</span></a> </li>
-        <li class="list-group-item"> <a href="#" class="list-group-item list-group-item-action list-group-item-secondary">Rajnish_TSK_7 <span style="float: right;">Not Started</span></a> </li>
-        
-        
-      </ul>
-      <button onclick="createNewTask()" id="createNewTask" class="btn"  style="background-color: forestgreen;color: white; margin: 5px;">Create Task</button>
-      <button onclick="closeTaskList()" class="btn" style="float: right; background-color: #cf4638;color: white; margin: 5px;">Close</button>
-    </div>
+  <!-- adding task_id list -->
+  <div id="object_list_container" style="display: none">
+    <input class="" type="text" id="task_id_list_search" onkeyup="taskFileter()" placeholder="Search for Object.." />
 
-    <!-- end task_id list -->
+    <li class="list-group-item" style="
+          background-color: #cf4638;
+          color: white;
+          padding-left: 20px;
+          padding-right: 20px;
+        ">
+      <span>Object Name</span> <span style="float: right">Action</span>
+    </li>
 
-    <div id="disableBG" style="display: none;"></div>
+    <ul class="list-group" id="task_id_list">
+      <li class="list-group-item list-group-item">
+        Point
+        <span style="float: right"><i class="btn  fa fa-pencil-square-o"></i> <i style="color: red;"
+            class=" btn fa fa-trash"></i></span>
+      </li>
+      <li class="list-group-item list-group-item">
+        Line
+        <span style="float: right"><i class="btn  fa fa-pencil-square-o"></i> <i style="color: red;"
+            class=" btn fa fa-trash"></i></span>
+      </li>
+      <li class="list-group-item list-group-item">
+        Polygon
+        <span style="float: right"><i class="btn  fa fa-pencil-square-o"></i> <i style="color: red;"
+            class=" btn fa fa-trash"></i></span>
+      </li>
+    </ul>
+    <button onclick="createNewObject()" id="createNewObject" class="btn"
+      style="background-color: forestgreen; color: white; margin: 5px">
+      Create Object
+    </button>
+    <button onclick="closeTaskList()" class="btn" style="
+          float: right;
+          background-color: #cf4638;
+          color: white;
+          margin: 5px;
+        ">
+      Close
+    </button>
+  </div>
 
+  <!-- end task_id list -->
 
-    <script src="utils/defultStyle.js"></script>
-    <script src="main.js"></script>
-    <script src="utils/utilty.js"></script>
-    <script src="utils/loadDataModel.js"></script>
-    <script src="utils/popup.js"></script>
-    <script src="utils/alert.js"></script>
-    <script src="tool/draw.js"></script>
-    <script src="utils/autoFil.js"></script>
-    <script src="utils/saveLocal.js"></script>
-    <script src="utils/saveIndexedDB.js"></script>
-    <script src="tool/gloableSearch.js"></script>
-    <script src="tool/tasks.js"></script>
-    <script src="utils/FileSaver.min.js"></script>
-    <script src="vendor/daypilot-modal-3.15.1.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  </body>
+  <div id="disableBG" style="display: none"></div>
+
+  <script src="utils/defultStyle.js"></script>
+  <script src="main.js"></script>
+  <script src="utils/saveIndexedDB.js"></script>
+  <script src="utils/utilty.js"></script>
+  <script src="utils/loadDataModel.js"></script>
+  <script src="utils/popup.js"></script>
+  <script src="utils/alert.js"></script>
+  <script src="tool/draw.js"></script>
+  <script src="utils/autoFil.js"></script>
+  <script src="utils/saveLocal.js"></script>
+  <script src="tool/gloableSearch.js"></script>
+  <script src="tool/tasks.js"></script>
+  <script src="utils/FileSaver.min.js"></script>
+  <script src="vendor/daypilot-modal-3.15.1.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</body>
+
 </html>

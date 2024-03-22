@@ -92,6 +92,7 @@ $("#drawBtn").click(function () {
           });
 
           draw.on("drawend", function (evt) {
+            $("#objTypeSelect").val("defult").change();
             drawflag = false;
             var feature = evt.feature;
 
@@ -117,10 +118,7 @@ $("#drawBtn").click(function () {
 
             getPreviousFill(objProp);
 
-            objNetworkType = document.getElementById(
-              "objNetworkTypeSelect"
-            ).value;
-            //
+            
 
             var creationDate = new Date().toISOString();
 
@@ -130,7 +128,6 @@ $("#drawBtn").click(function () {
               ol_id: ol_id,
               action: "add",
               Object_Name: Object_Name,
-              "Network Type": objNetworkType,
               creationDateTime: creationDate,
             });
           });
@@ -221,5 +218,5 @@ function saveIndexedDB(feature) {
       type: feature.getGeometry().getType(),
     },
   };
-  addLocalDrawing("Rajnish_Task_01", asset);
+  addLocalDrawing("Task_01", asset);
 }

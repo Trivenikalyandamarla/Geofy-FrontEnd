@@ -9,6 +9,7 @@ request.onsuccess = function (event) {
   db = request.result;
   console.log("success: " + db);
   readAll();
+  loadLocalConfig()
 
   
 };
@@ -18,8 +19,8 @@ request.onupgradeneeded = function (event) {
   var objectStore = db.createObjectStore("localDrawing", {
     keyPath: "task_id",
   });
-  var objectStoreTaskID = db.createObjectStore("localTaskID", {
-    keyPath: "task_id",
+  var objectStoreTaskID = db.createObjectStore("localObjectDataModel", {
+    keyPath: "objName",
   });
 };
 
@@ -63,7 +64,7 @@ function deletFeature(taskid, ol_id) {
 
 function readAll() {
   var objectStore = db.transaction("localDrawing").objectStore("localDrawing");
-  var objectStoreTaskID = db.transaction("localTaskID").objectStore("localTaskID");
+  var objectStoreTaskID = db.transaction("localObjectDataModel").objectStore("localObjectDataModel");
 
   objectStore.openCursor().onsuccess = function (event) {
     var cursor = event.target.result;
@@ -83,14 +84,14 @@ function readAll() {
   };
 }
 
-function addLocalTaskID(i, j) {
-  var transaction = db.transaction(["localTaskID"], "readwrite");
-  var objectStore = transaction.objectStore("localTaskID");
+function addLocalObjectDataModel(i, j) {
+  var transaction = db.transaction(["localObjectDataModel"], "readwrite");
+  var objectStore = transaction.objectStore("localObjectDataModel");
   var request = objectStore.get(i);
 
   request.onsuccess = function (event) {
-    objectStore.add({task_id:i,value:j});
-    console.log("New Task Id Added");
+    objectStore.add({objName:i,value:j});
+    console.log("New localObjectDataModel Added");
   };
 
   request.onerror = function (event) {
