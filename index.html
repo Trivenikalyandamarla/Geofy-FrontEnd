@@ -21,7 +21,7 @@
     <div id="header">
       <div>
         <img id="logo" src="img/logo_geofy.png" alt="logo_geofy" />
-        <input class="" type="text" onkeyup="gloableSearch(this.value)" id="gloableSearch"
+        <input class="" type="text" id="gloableSearch"
           placeholder="Search Here.." />
         <div class="ol-control mainMenuDiv">
           <button class="mainMenu" id="menuBtn" data-toggle="collapse" data-target="#menucoll">
@@ -73,47 +73,24 @@
   </div>
 
   <!-- adding task_id list -->
-  <div id="object_list_container" style="display: none">
-    <input class="" type="text" id="task_id_list_search" onkeyup="taskFileter()" placeholder="Search for Object.." />
+  <div id="task_id_list_container" style="display: none;">
+    <input class="" type="text" id="task_id_list_search" onkeyup="taskFileter()" placeholder="Search for Task..">
 
-    <li class="list-group-item" style="
-          background-color: #cf4638;
-          color: white;
-          padding-left: 20px;
-          padding-right: 20px;
-        ">
-      <span>Object Name</span> <span style="float: right">Action</span>
-    </li>
+    <li class="list-group-item" style="background-color: #cf4638;color: white; padding-left: 20px; padding-right: 20px;"><span >Task Id</span> <span style="float: right;">Status</span></li>
 
     <ul class="list-group" id="task_id_list">
-      <li class="list-group-item list-group-item">
-        Point
-        <span style="float: right"><i class="btn  fa fa-pencil-square-o"></i> <i style="color: red;"
-            class=" btn fa fa-trash"></i></span>
-      </li>
-      <li class="list-group-item list-group-item">
-        Line
-        <span style="float: right"><i class="btn  fa fa-pencil-square-o"></i> <i style="color: red;"
-            class=" btn fa fa-trash"></i></span>
-      </li>
-      <li class="list-group-item list-group-item">
-        Polygon
-        <span style="float: right"><i class="btn  fa fa-pencil-square-o"></i> <i style="color: red;"
-            class=" btn fa fa-trash"></i></span>
-      </li>
+      <li class="list-group-item"> <a href="#" class="list-group-item list-group-item-action list-group-item-success">Rajnish_TSK_1 <span style="float: right;">Completed</span></a> </li>
+      <li class="list-group-item"> <a href="#" class="list-group-item list-group-item-action list-group-item-warning">Rajnish_TSK_2 <span style="float: right;">In Progress</span></a> </li>
+      <li class="list-group-item"> <a href="#" class="list-group-item list-group-item-action list-group-item-success">Rajnish_TSK_3 <span style="float: right;">Completed</span></a> </li>
+      <li class="list-group-item"> <a href="#" class="list-group-item list-group-item-action list-group-item-warning">Rajnish_TSK_4 <span style="float: right;">In Progress</span></a> </li>
+      <li class="list-group-item"> <a href="#" class="list-group-item list-group-item-action list-group-item-warning">Rajnish_TSK_5 <span style="float: right;">In Progress</span></a> </li>
+      <li class="list-group-item"> <a href="#" class="list-group-item list-group-item-action list-group-item-secondary">Rajnish_TSK_6 <span style="float: right;">Not Started</span></a> </li>
+      <li class="list-group-item"> <a href="#" class="list-group-item list-group-item-action list-group-item-secondary">Rajnish_TSK_7 <span style="float: right;">Not Started</span></a> </li>
+      
+      
     </ul>
-    <button onclick="createNewObject()" id="createNewObject" class="btn"
-      style="background-color: forestgreen; color: white; margin: 5px">
-      Create Object
-    </button>
-    <button onclick="closeTaskList()" class="btn" style="
-          float: right;
-          background-color: #cf4638;
-          color: white;
-          margin: 5px;
-        ">
-      Close
-    </button>
+    <button onclick="createNewTask()" id="createNewTask" class="btn"  style="background-color: forestgreen;color: white; margin: 5px;">Create Task</button>
+    <button onclick="closeTaskList()" class="btn" style="float: right; background-color: #cf4638;color: white; margin: 5px;">Close</button>
   </div>
 
   <!-- end task_id list -->

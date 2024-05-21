@@ -9,7 +9,7 @@ $.getJSON(localConfigFile).done(function (data) {
 
     var objName = element.name;
 
-    addLocalObjectDataModel(objName,element)
+    // addLocalObjectDataModel(objName,element)
     
   })
 

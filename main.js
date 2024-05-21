@@ -329,7 +329,7 @@ function preview_image(event) {
 }
 
 $("#userObjMenu").on("click", function () {
-  $("#object_list_container").toggle();
+  $("#task_id_list_container").toggle();
   $("#disableBG").toggle();
 });
 

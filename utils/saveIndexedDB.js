@@ -9,7 +9,7 @@ request.onsuccess = function (event) {
   db = request.result;
   console.log("success: " + db);
   readAll();
-  loadLocalConfig()
+  // loadLocalConfig()
 
   
 };

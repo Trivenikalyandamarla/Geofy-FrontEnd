@@ -7,7 +7,7 @@ const drawTaskID = new ol.layer.Vector({
 map.addLayer(drawTaskID);
 
 function closeTaskList() {
-  $("#object_list_container").hide();
+  $("#task_id_list_container").hide();
   $("#disableBG").hide();
 }
 
